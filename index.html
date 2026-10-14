@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analisador de Conexões de Aeroportos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topo">
+  <div class="logo">✈</div>
+  <div><h1>Analisador de Conexões de Aeroportos</h1><p>Grafo dirigido da malha aérea brasileira · BFS e Dijkstra</p></div>
+</div>
+
+<div class="grade">
+  <aside class="vidro">
+    <h2>Buscar rota</h2>
+    <label>Origem (cidade, aeroporto ou sigla)</label>
+    <div class="campo"><input type="text" id="orig" placeholder="Ex.: São Paulo, Galeão, REC" autocomplete="off"><ul class="lista" id="l-orig" hidden></ul></div>
+    <button class="troca" id="troca" title="Trocar origem e destino">⇅</button>
+    <label>Destino</label>
+    <div class="campo"><input type="text" id="dest" placeholder="Ex.: Manaus, Belém, Florianópolis" autocomplete="off"><ul class="lista" id="l-dest" hidden></ul></div>
+
+    <label>Máximo de escalas</label>
+    <select id="escalas">
+      <option value="">Sem limite</option>
+      <option value="0">Somente voo direto</option>
+      <option value="1">Até 1 escala</option>
+      <option value="2">Até 2 escalas</option>
+    </select>
+
+    <label>Companhias aéreas</label>
+    <div class="cias" id="cias">
+      <label><input type="checkbox" value="GOL" checked> GOL</label>
+      <label><input type="checkbox" value="LATAM" checked> LATAM</label>
+      <label><input type="checkbox" value="AZUL" checked> Azul</label>
+    </div>
+
+    <button class="btn" id="buscar">Buscar rotas</button>
+    <div class="msg" id="msg"></div>
+
+    <h2 style="margin-top:20px">Rotas prontas</h2>
+    <div class="chips" id="presets"></div>
+  </aside>
+
+  <section class="vidro mapa">
+    <div class="barra">
+      <span class="status" id="status">Clique em um aeroporto no mapa para ver seus voos diretos.</span>
+      <button class="btn-anim" id="anim">▶ Ver o algoritmo pensando</button>
+    </div>
+    <svg id="mapa" viewBox="0 0 640 700">
+      <g id="gArestas"></g><g id="gBusca"></g><g id="gRota"></g><g id="gNos"></g>
+    </svg>
+    <div class="leg">
+      <span><i style="background:#ff5e62"></i>Origem</span><span><i style="background:#7be495"></i>Destino</span>
+      <span><i style="background:var(--or)"></i>Escala</span><span><i style="background:var(--cyan)"></i>Visitado pelo algoritmo</span>
+    </div>
+    <div class="info" id="info" hidden></div>
+  </section>
+</div>
+
+<section id="resultados"></section>
+<footer>Teoria de Grafos · Guilherme Belém, Gabriel Fontes, João Victor Camargo, Leonardo Seiiji Sakoda Sassaki</footer>
+
+<script src="dados.js"></script>
+<script src="algoritmos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
