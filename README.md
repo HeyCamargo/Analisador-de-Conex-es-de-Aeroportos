@@ -79,7 +79,7 @@ Além da implementação dos conceitos de Teoria de Grafos, a aplicação explor
 - Guilherme Belém
 - Gabriel Fontes
 - João Victor Camargo
-- Leonardo Seiiji Sakoda Sassaki
+
 
 ---
 
